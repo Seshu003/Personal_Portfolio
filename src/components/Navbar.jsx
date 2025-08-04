@@ -10,7 +10,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { isDark, toggleTheme } = useTheme();
   
-  const sections = ['home', 'about', 'skills', 'projects', 'experience', 'contact'];
+  const sections = ['home', 'about', 'skills', 'projects', 'experience', 'certificates', 'contact'];
   const activeSection = useScrollSpy(sections);
 
   useEffect(() => {
@@ -28,6 +28,7 @@ const Navbar = () => {
     { name: 'Skills', to: 'skills' },
     { name: 'Projects', to: 'projects' },
     { name: 'Experience', to: 'experience' },
+    { name: 'Certificates', to: 'certificates' },
     { name: 'Contact', to: 'contact' },
   ];
 
