@@ -43,23 +43,23 @@ const Experience = () => {
       title: 'AI & ML Intern',
       company: 'Sweach Foundation',
       period: 'May–July 2024',
-      description: 'Developed AI/ML models using Python & TensorFlow; applied Deep Learning and Computer Vision techniques for real-world applications.',
+      description: 'Developed AI/ML models using Python & TensorFlow, applied Deep Learning and Computer Vision techniques for real-world applications.',
       tags: ['Python', 'TensorFlow', 'Deep Learning', 'Computer Vision'],
       type: 'internship'
     },
     {
-      title: 'Android & Cloud Intern',
+      title: 'Android Developer Intern',
       company: 'Eduskills',
-      period: 'Sept–Nov 2024',
-      description: 'Built Android applications with Kotlin; integrated AWS cloud services with AI models for scalable mobile solutions.',
+      period: 'July-Sept 2024',
+      description: 'Built Android applications with Kotlin and have learnt to build from scratch.',
       tags: ['Android', 'Kotlin', 'AWS', 'Cloud Integration'],
       type: 'internship'
     },
     {
-      title: 'Android & Cloud Intern',
+      title: 'AWS Cloud & Data Engineer Intern',
       company: 'Eduskills',
-      period: 'Sept–Nov 2024',
-      description: 'Built Android applications with Kotlin; integrated AWS cloud services with AI models for scalable mobile solutions.',
+      period: 'Oct-Nov 2024',
+      description: 'Gained hands-on experience in cloud-based data pipelines, storage, and processing using AWS services.',
       tags: ['Android', 'Kotlin', 'AWS', 'Cloud Integration'],
       type: 'internship'
     }
@@ -251,7 +251,7 @@ const Experience = () => {
             <div className="flex items-center justify-center gap-3 mb-12">
               <TrophyIcon className="w-8 h-8 text-primary-500" />
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Achievements & Certifications
+                Achievements
               </h3>
             </div>
 
