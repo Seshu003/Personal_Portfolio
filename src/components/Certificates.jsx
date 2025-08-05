@@ -105,7 +105,7 @@ const Certificates = () => {
       title: 'Python Basics',
       issuer: 'HackerRank',
       date: '2024',
-      image: Basics_of_python.jpg,
+      image: Basics_of_python,
       category: 'Programming'
     },
     {
