@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 import profileimg from '../images/profile.jpg';
+// import resume from '../images/SaiSeshuAdimulam.pdf'
 
 <Typewriter
   words={[
@@ -111,7 +112,7 @@ const Hero = () => {
                 Get In Touch
               </Link>
               <a
-                href="/resume/SaiSeshuAdimulam.pdf"
+                href="/Seshur.pdf"
                 download
                 className="btn-secondary inline-flex items-center justify-center gap-2"
               >
