@@ -9,6 +9,8 @@ import {
   CodeBracketIcon
 } from '@heroicons/react/24/outline';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import ola from '../images/ola.jpg';
+import weather from '../images/weather.jpg';
 
 const Projects = () => {
   const [filter, setFilter] = useState('all');
@@ -80,7 +82,7 @@ const Projects = () => {
       status: 'completed',
       category: 'data-science',
       tags: ['Machine Learning', 'Predictive Analytics', 'Python', 'Data Visualization'],
-      image: 'images/ola.jpg',
+      image: ola,
       github: 'https://github.com/Seshu003',
       demo: 'https://example.com',
       features: [
@@ -98,7 +100,7 @@ const Projects = () => {
       status: 'completed',
       category: 'data-science',
       tags: ['Machine Learning', 'API Integration', 'Data Analysis', 'Environmental'],
-      image: 'images/weather.jpg',
+      image: weather,
       github: 'https://github.com/Seshu003/Weather-Forecasting-and-AQI',
       demo: 'https://example.com',
       features: [

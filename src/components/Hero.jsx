@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
+import profileimg from '../images/profile.jpg';
 
 <Typewriter
   words={[
@@ -178,7 +179,7 @@ const Hero = () => {
               </motion.div>
               <motion.img
                 whileHover={{ scale: 1.05 }}
-                src="/images/profile.jpg"
+                src={profileimg}
                 alt="Sai Seshu Adimulam"
                 className="relative z-10 w-80 h-80 object-cover rounded-full shadow-2xl"
               />

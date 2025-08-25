@@ -7,6 +7,23 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon
 } from '@heroicons/react/24/outline';
+import adv_nlp from '../images/certificates/Adv_NPL.jpg';
+import AI_Fundamentals from '../images/certificates/AI_Fundamentals.jpg';
+import AICTE_AWS from '../images/certificates/AICTE_AWS.jpg';
+import AICTE_GOOGLE from '../images/certificates/AICTE_GOOGLE.jpg';
+import AWS_CF from '../images/certificates/AWS_CF.jpg';
+import AWS_DE from '../images/certificates/AWS_DE.jpg';
+import Basics_of_python from '../images/certificates/Basics_of_python.jpg';
+import IBM_Edunet from '../images/certificates/IBM_Edunet.jpg';
+import ce from '../images/certificates/‌Intro_to_DL_C2-1.jpg';
+// import ce2 from '../images/certificates/‌Intro_to_DL_C3-1.jpg';
+import Introduction_to_Generaive_AI from '../images/certificates/Introduction_to_Generaive_AI.jpg';
+import Long_Term_Google from '../images/certificates/Long_Term_Google-Android-Developer_and_AWS_Data_Engineer.jpg';
+import Sweach from '../images/certificates/Sweach_AI.jpg';
+import PyTorch from '../images/certificates/UC-M_Pytorch.jpg';
+import web from '../images/certificates/Web_Full_Stack.jpg';
+import z from '../images/certificates/Zscaler_Networking.jpg';
+
 
 const Certificates = () => {
   const [showAll, setShowAll] = useState(false);
@@ -41,7 +58,7 @@ const Certificates = () => {
       title: 'AICTE Google Cloud Computing',
       issuer: 'AICTE & Google',
       date: '2024',
-      image: '/images/certificates/AICTE_GOOGLE.jpg',
+      image: AICTE_GOOGLE,
       category: 'Cloud Computing'
     },
     {
@@ -49,7 +66,7 @@ const Certificates = () => {
       title: 'AWS Cloud Foundations',
       issuer: 'Amazon Web Services',
       date: '2024',
-      image: '/images/certificates/AWS_CF.jpg',
+      image: AWS_CF,
       category: 'Cloud Computing'
     },
     {
@@ -57,7 +74,7 @@ const Certificates = () => {
       title: 'AI Fundamentals',
       issuer: 'IBM',
       date: '2024',
-      image: '/images/certificates/AI_Fundamentals.jpg',
+      image: AI_Fundamentals,
       category: 'Artificial Intelligence'
     },
     {
@@ -65,7 +82,7 @@ const Certificates = () => {
       title: 'AICTE AWS Data Engineering',
       issuer: 'AICTE & AWS',
       date: '2024',
-      image: '/images/certificates/AICTE_AWS.jpg',
+      image: AICTE_AWS,
       category: 'Data Engineering'
     },
     {
@@ -73,7 +90,7 @@ const Certificates = () => {
       title: 'AWS Data Engineering',
       issuer: 'Amazon Web Services',
       date: '2024',
-      image: '/images/certificates/AWS_DE.jpg',
+      image: AWS_DE,
       category: 'Data Engineering'
     },
     {
@@ -81,7 +98,7 @@ const Certificates = () => {
       title: 'Advanced NLP',
       issuer: 'Coursera',
       date: '2024',
-      image: '/images/certificates/Adv_NPL.jpg',
+      image: adv_nlp,
       category: 'Machine Learning'
     },
     {
@@ -89,7 +106,7 @@ const Certificates = () => {
       title: 'Python Basics',
       issuer: 'HackerRank',
       date: '2024',
-      image: '/images/certificates/Basics_of_python.jpg',
+      image: Basics_of_python.jpg,
       category: 'Programming'
     },
     {
@@ -97,7 +114,7 @@ const Certificates = () => {
       title: 'IBM Edunet Foundation',
       issuer: 'IBM',
       date: '2024',
-      image: '/images/certificates/IBM_Edunet.jpg',
+      image: IBM_Edunet,
       category: 'Technology'
     },
     {
@@ -105,7 +122,7 @@ const Certificates = () => {
       title: 'Introduction to NLP',
       issuer: 'Coursera',
       date: '2024',
-      image: '/images/certificates/Intro_to_NLP_C3-1.jpg',
+      // image: ce2,
       category: 'Machine Learning'
     },
     {
@@ -113,7 +130,7 @@ const Certificates = () => {
       title: 'Introduction to Generative AI',
       issuer: 'Google',
       date: '2024',
-      image: '/images/certificates/Introduction_to_Generaive_AI.jpg',
+      image: Introduction_to_Generaive_AI,
       category: 'Artificial Intelligence'
     },
     {
@@ -121,7 +138,7 @@ const Certificates = () => {
       title: 'Sweach AI Certification',
       issuer: 'Sweach Foundation',
       date: '2024',
-      image: '/images/certificates/Sweach_AI.jpg',
+      image: Sweach,
       category: 'Artificial Intelligence'
     },
     {
@@ -129,7 +146,7 @@ const Certificates = () => {
       title: 'PyTorch Fundamentals',
       issuer: 'Udemy',
       date: '2024',
-      image: '/images/certificates/UC-M_Pytorch.jpg',
+      image: PyTorch,
       category: 'Machine Learning'
     },
     {
@@ -137,7 +154,7 @@ const Certificates = () => {
       title: 'Web Full Stack Development',
       issuer: 'Great Learning',
       date: '2024',
-      image: '/images/certificates/Web_Full_Stack.jpg',
+      image: web,
       category: 'Web Development'
     },
     {
@@ -145,7 +162,7 @@ const Certificates = () => {
       title: 'Zscaler Networking',
       issuer: 'Zscaler',
       date: '2024',
-      image: '/images/certificates/Zscaler_Networking.jpg',
+      image: z,
       category: 'Networking'
     },
     {
@@ -153,7 +170,7 @@ const Certificates = () => {
       title: 'Introduction to Deep Learning',
       issuer: 'Coursera',
       date: '2024',
-      image: '/images/certificates/‌Intro_to_DL_C2-1.jpg',
+      image: ce,
       category: 'Machine Learning'
     },
     {
@@ -161,7 +178,7 @@ const Certificates = () => {
       title: 'Google Android Developer & AWS Data Engineer',
       issuer: 'Google & AWS',
       date: '2024',
-      image: '/images/certificates/Long_Term_Google-Android-Developer_and_AWS_Data_Engineer.jpg',
+      image: Long_Term_Google,
       category: 'Mobile Development'
     }
   ];
