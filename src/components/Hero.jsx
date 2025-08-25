@@ -147,7 +147,7 @@ const Hero = () => {
               </motion.a>
 
               <motion.a
-                href="https://instagram.com/your_username"  // Replace with your actual handle
+                href="https://www.instagram.com/seshu_adimulam_5925/"  // Replace with your actual handle
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
