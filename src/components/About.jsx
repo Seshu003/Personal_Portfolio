@@ -68,13 +68,13 @@ const About = () => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Personal Information */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <div className="glass dark:glass-dark rounded-2xl p-8">
+            <motion.div variants={itemVariants} className="space-y-8 h-full">
+              <div className="glass dark:glass-dark rounded-2xl p-8 h-full flex flex-col">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
                   <AcademicCapIcon className="w-8 h-8 text-primary-500" />
                   Personal Information
                 </h3>
-                <div className="grid sm:grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-2 gap-6 flex-grow">
                   {personalInfo.map((info, index) => (
                     <motion.div
                       key={index}
@@ -99,13 +99,13 @@ const About = () => {
             </motion.div>
 
             {/* Strengths */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <div className="glass dark:glass-dark rounded-2xl p-8">
+            <motion.div variants={itemVariants} className="space-y-8 h-full">
+              <div className="glass dark:glass-dark rounded-2xl p-8 h-full flex flex-col">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
                   <SparklesIcon className="w-8 h-8 text-primary-500" />
                   My Strengths
                 </h3>
-                <div className="grid gap-4">
+                <div className="grid gap-4 flex-grow">
                   {strengths.map((strength, index) => (
                     <motion.div
                       key={index}
