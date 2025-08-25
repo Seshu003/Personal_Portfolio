@@ -37,8 +37,18 @@ const About = () => {
     { icon: UserIcon, label: "Father's Name", value: 'A. Radha Prasad' },
     { icon: UserIcon, label: 'Gender', value: 'Male' },
     { icon: GlobeAltIcon, label: 'Nationality', value: 'Indian' },
-    { icon: GlobeAltIcon, label: 'Languages', value: 'Telugu | English | Hindi | Kannada' },
-    { icon: HeartIcon, label: 'Hobbies', value: 'Surfing internet, gathering tech ideas' },
+    { 
+      icon: GlobeAltIcon, 
+      label: 'Languages', 
+      value: ['Telugu', 'English', 'Hindi', 'Kannada'],
+      type: 'languages'
+    },
+    { 
+      icon: HeartIcon, 
+      label: 'Hobbies', 
+      value: ['Surfing Internet', 'Gathering Tech Ideas', 'Learning New Technologies', 'Problem Solving'],
+      type: 'hobbies'
+    },
   ];
 
   const strengths = [
@@ -68,29 +78,68 @@ const About = () => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Personal Information */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <div className="glass dark:glass-dark rounded-2xl p-8">
+            <motion.div variants={itemVariants} className="space-y-8 h-full">
+              <div className="glass dark:glass-dark rounded-2xl p-8 h-full flex flex-col">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
                   <AcademicCapIcon className="w-8 h-8 text-primary-500" />
                   Personal Information
                 </h3>
-                <div className="grid sm:grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-2 gap-6 flex-grow">
                   {personalInfo.map((info, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="flex items-start gap-3 p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors duration-300"
+                      className={`flex items-start gap-3 p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors duration-300 ${
+                        info.type === 'languages' || info.type === 'hobbies' ? 'col-span-2' : ''
+                      }`}
                     >
                       <info.icon className="w-5 h-5 text-primary-500 mt-1 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
                           {info.label}
                         </h4>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm">
-                          {info.value}
-                        </p>
+                        {info.type === 'languages' ? (
+                          <div className="flex flex-wrap gap-2 mt-2">
+                            {info.value.map((language, langIndex) => (
+                              <motion.span
+                                key={langIndex}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: (index * 0.1) + (langIndex * 0.1) }}
+                                whileHover={{ scale: 1.05 }}
+                                className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium cursor-default"
+                              >
+                                {language}
+                              </motion.span>
+                            ))}
+                          </div>
+                        ) : info.type === 'hobbies' ? (
+                          <div className="grid grid-cols-2 gap-2 mt-2">
+                            {info.value.map((hobby, hobbyIndex) => (
+                              <motion.div
+                                key={hobbyIndex}
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: (index * 0.1) + (hobbyIndex * 0.1) }}
+                                whileHover={{ scale: 1.02, x: 2 }}
+                                className="flex items-center gap-2 p-2 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-lg"
+                              >
+                                <span className="text-primary-500">
+                                  {hobbyIndex === 0 ? '🌐' : hobbyIndex === 1 ? '💡' : hobbyIndex === 2 ? '📚' : '🧩'}
+                                </span>
+                                <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                                  {hobby}
+                                </span>
+                              </motion.div>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="text-gray-600 dark:text-gray-300 text-sm">
+                            {info.value}
+                          </p>
+                        )}
                       </div>
                     </motion.div>
                   ))}
@@ -99,13 +148,13 @@ const About = () => {
             </motion.div>
 
             {/* Strengths */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <div className="glass dark:glass-dark rounded-2xl p-8">
+            <motion.div variants={itemVariants} className="space-y-8 h-full">
+              <div className="glass dark:glass-dark rounded-2xl p-8 h-full flex flex-col">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
                   <SparklesIcon className="w-8 h-8 text-primary-500" />
                   My Strengths
                 </h3>
-                <div className="grid gap-4">
+                <div className="grid gap-4 flex-grow">
                   {strengths.map((strength, index) => (
                     <motion.div
                       key={index}
