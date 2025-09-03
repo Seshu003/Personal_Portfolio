@@ -20,9 +20,10 @@ import profileimg from '../images/profile.jpg';
 />
 
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
-import { FaGithub, FaLinkedin, FaDownload } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaDownload, FaBrain, FaRobot } from 'react-icons/fa';
 import { Link } from 'react-scroll';
 import { FaInstagram } from 'react-icons/fa';
+import { SparklesIcon, CpuChipIcon } from '@heroicons/react/24/outline';
 
 
 const Hero = () => {
@@ -191,9 +192,107 @@ const Hero = () => {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="absolute -top-4 -right-4 w-20 h-20 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg"
+                className="absolute -top-6 -right-6 group cursor-pointer"
               >
-                AI/ML
+                <div className="relative">
+                  {/* Outer glow ring */}
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      opacity: [0.3, 0.6, 0.3]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="absolute inset-0 w-24 h-24 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full blur-md"
+                  />
+                  
+                  {/* Main badge */}
+                  <div className="relative w-24 h-24 bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 rounded-full flex flex-col items-center justify-center text-white shadow-2xl border-4 border-white/20 backdrop-blur-sm">
+                    {/* Animated icons */}
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                      className="absolute top-1 right-1"
+                    >
+                      <SparklesIcon className="w-4 h-4 text-yellow-300" />
+                    </motion.div>
+                    
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, 180, 360]
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <CpuChipIcon className="w-6 h-6 mb-1" />
+                    </motion.div>
+                    
+                    <span className="text-xs font-bold tracking-wider">
+                      AI/ML
+                    </span>
+                    
+                    {/* Floating particles */}
+                    <motion.div
+                      animate={{ 
+                        y: [-10, -20, -10],
+                        opacity: [0.5, 1, 0.5]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.5
+                      }}
+                      className="absolute -top-2 left-2 w-2 h-2 bg-yellow-400 rounded-full"
+                    />
+                    
+                    <motion.div
+                      animate={{ 
+                        y: [-8, -16, -8],
+                        opacity: [0.3, 0.8, 0.3]
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 1
+                      }}
+                      className="absolute -top-1 right-3 w-1.5 h-1.5 bg-blue-300 rounded-full"
+                    />
+                    
+                    <motion.div
+                      animate={{ 
+                        y: [-6, -14, -6],
+                        opacity: [0.4, 0.9, 0.4]
+                      }}
+                      transition={{
+                        duration: 1.8,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 1.5
+                      }}
+                      className="absolute -top-3 left-1/2 w-1 h-1 bg-green-300 rounded-full"
+                    />
+                  </div>
+                  
+                  {/* Hover effect overlay */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    className="absolute inset-0 w-24 h-24 bg-gradient-to-br from-white/10 to-transparent rounded-full"
+                  />
+                </div>
               </motion.div>
             </div>
           </motion.div>
