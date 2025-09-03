@@ -166,24 +166,30 @@ const Hero = () => {
             className="flex justify-center lg:justify-end"
           >
             <div className="relative">
+              {/* Simple gradient border */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 p-1">
+                <div className="w-full h-full rounded-full bg-white dark:bg-dark-900"></div>
+              </div>
+              
+              {/* Subtle glow effect */}
               <motion.div
                 animate={{ 
-                  rotate: [0, 360],
+                  opacity: [0.3, 0.6, 0.3],
+                  scale: [1, 1.05, 1]
                 }}
                 transition={{
-                  duration: 20,
+                  duration: 3,
                   repeat: Infinity,
-                  ease: "linear"
+                  ease: "easeInOut"
                 }}
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-400 to-primary-600 p-1"
-              >
-                <div className="w-full h-full rounded-full bg-white dark:bg-dark-900"></div>
-              </motion.div>
+                className="absolute inset-0 rounded-full bg-primary-500/20 blur-xl"
+              />
+              
               <motion.img
                 whileHover={{ scale: 1.05 }}
                 src={profileimg}
                 alt="Sai Seshu Adimulam"
-                className="relative z-10 w-80 h-80 object-cover rounded-full shadow-2xl"
+                className="relative z-10 w-80 h-80 object-cover rounded-full shadow-2xl hover:shadow-3xl transition-shadow duration-300"
               />
               <motion.div
                 animate={{ y: [0, -10, 0] }}
