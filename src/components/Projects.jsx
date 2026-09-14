@@ -57,7 +57,7 @@ const Projects = () => {
       category: 'Full-Stack & IoT Systems',
       tags: ['React', 'Node.js/Express', 'PostgreSQL', 'Socket.IO', 'MQTT', 'JWT', 'Web Speech API'],
       github: 'https://github.com/Seshu003',
-      demo: 'https://seshu.vercel.app',
+      demo: 'https://apex-pro-sable.vercel.app/',
       isInteractiveTelemetry: true,
       features: [
         'Real-time IoT telemetry pipeline using Aedes MQTT & Socket.IO',

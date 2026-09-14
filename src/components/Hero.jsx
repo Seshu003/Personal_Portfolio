@@ -79,12 +79,6 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Bio Paragraph */}
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed mx-auto lg:mx-0">
-              AI/ML &amp; Full-Stack Engineer with proven hands-on experience designing and deploying 
-              production-ready distributed applications using <span className="text-white font-semibold">Python, TensorFlow, React, Node.js, and PostgreSQL</span>. 
-              Specialized in real-time IoT telemetry pipelines (MQTT &amp; WebSockets), LLM &amp; RAG architectures, and scalable cloud deployments.
-            </p>
 
             {/* CTAs */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
@@ -206,9 +200,19 @@ const Hero = () => {
                     </div>
 
                     <div className="p-3 rounded-lg bg-indigo-950/30 border border-indigo-500/20 text-slate-300 text-[11px] space-y-1">
-                      <div className="flex items-center gap-2 text-indigo-300 font-semibold">
-                        <CpuChipIcon className="w-4 h-4 text-indigo-400" />
-                        <span>ArcForge Telemetry Pipeline</span>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-indigo-300 font-semibold">
+                          <CpuChipIcon className="w-4 h-4 text-indigo-400" />
+                          <span>ArcForge Telemetry Pipeline</span>
+                        </div>
+                        <a 
+                          href="https://apex-pro-sable.vercel.app/" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-cyan-400 hover:text-cyan-300 font-mono text-[10px] underline"
+                        >
+                          apex-pro ↗
+                        </a>
                       </div>
                       <div className="text-slate-400">
                         Aedes MQTT Broker listening on socket:5000. Real-time sensor streaming active for student evaluation HUD.
