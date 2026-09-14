@@ -1,26 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline';
-import { useTheme } from '../contexts/ThemeContext';
-import { useScrollSpy } from '../hooks/useScrollSpy';
+import { Bars3Icon, XMarkIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { isDark, toggleTheme } = useTheme();
-  
-  const sections = ['home', 'about', 'skills', 'projects', 'experience', 'certificates', 'contact'];
-  const activeSection = useScrollSpy(sections);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [activeSection, setActiveSection] = useState('home');
 
   const navItems = [
     { name: 'Home', to: 'home' },
@@ -32,135 +19,158 @@ const Navbar = () => {
     { name: 'Contact', to: 'contact' },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+
+      // Simple active section detector
+      const scrollPosition = window.scrollY + 120;
+      for (let i = navItems.length - 1; i >= 0; i--) {
+        const section = document.getElementById(navItems[i].to);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(navItems[i].to);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/80 dark:bg-dark-900/80 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex-shrink-0"
-          >
-            <Link
-              to="home"
-              smooth={true}
-              duration={500}
-              className="text-2xl font-bold font-space-grotesk cursor-pointer"
-            >
-              <span className="text-primary-500">SAI</span>
-              <span className="text-gray-800 dark:text-white ml-1">SESHU</span>
-            </Link>
-          </motion.div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Link
-                    to={item.to}
-                    smooth={true}
-                    duration={500}
-                    offset={-70}
-                    className={`px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-all duration-300 ${
-                      activeSection === item.to
-                        ? 'text-primary-500 bg-primary-50 dark:bg-primary-900/20'
-                        : 'text-gray-700 dark:text-gray-300 hover:text-primary-500 hover:bg-gray-100 dark:hover:bg-gray-800'
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-3 sm:py-4 transition-all duration-300">
+      <nav
+        className={`w-full max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 py-2.5 rounded-2xl transition-all duration-300 ${
+          isScrolled
+            ? 'bg-slate-950/80 backdrop-blur-xl border border-white/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]'
+            : 'bg-slate-950/40 backdrop-blur-md border border-white/5'
+        }`}
+      >
+        {/* Logo */}
+        <Link
+          to="home"
+          smooth={true}
+          duration={500}
+          className="flex items-center gap-2 cursor-pointer group"
+        >
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 flex items-center justify-center font-space-grotesk font-black text-white text-base shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform">
+            SS
           </div>
+          <div className="flex flex-col">
+            <span className="font-space-grotesk font-bold text-white text-base leading-none tracking-tight flex items-center gap-1.5">
+              SAI SESHU
+              <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            </span>
+            <span className="font-mono text-[10px] text-slate-400 tracking-wider">
+              AI & FULL-STACK
+            </span>
+          </div>
+        </Link>
 
-          {/* Theme Toggle & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-            >
-              {isDark ? (
-                <SunIcon className="w-5 h-5" />
-              ) : (
-                <MoonIcon className="w-5 h-5" />
-              )}
-            </motion.button>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
+        {/* Desktop Nav Items */}
+        <div className="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/[0.06] px-2 py-1 rounded-xl">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.to;
+            return (
+              <Link
+                key={item.name}
+                to={item.to}
+                smooth={true}
+                duration={500}
+                offset={-80}
+                className={`relative px-3.5 py-1.5 rounded-lg text-xs font-medium cursor-pointer transition-all duration-200 ${
+                  isActive
+                    ? 'text-white'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.04]'
+                }`}
               >
-                {isOpen ? (
-                  <XMarkIcon className="w-6 h-6" />
-                ) : (
-                  <Bars3Icon className="w-6 h-6" />
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNavIndicator"
+                    className="absolute inset-0 bg-gradient-to-r from-indigo-600/40 to-cyan-500/30 border border-indigo-500/50 rounded-lg shadow-[0_0_12px_rgba(99,102,241,0.3)]"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
                 )}
-              </motion.button>
-            </div>
+                <span className="relative z-10">{item.name}</span>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex items-center gap-2.5">
+          <a
+            href="https://github.com/Seshu003"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.05] border border-white/10 text-slate-300 hover:text-white hover:border-indigo-500/50 hover:bg-indigo-500/10 transition-all"
+            title="GitHub Profile"
+          >
+            <FaGithub className="w-4 h-4" />
+          </a>
+          <a
+            href="https://linkedin.com/in/sai-seshu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.05] border border-white/10 text-slate-300 hover:text-white hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all"
+            title="LinkedIn Profile"
+          >
+            <FaLinkedin className="w-4 h-4" />
+          </a>
+          
+          <a
+            href="/SaiSeshuAdimulam.pdf"
+            download="SaiSeshuAdimulam_Resume.pdf"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md shadow-indigo-600/30 transition-all duration-200 hover:scale-[1.02]"
+          >
+            <ArrowDownTrayIcon className="w-3.5 h-3.5" />
+            <span>CV</span>
+          </a>
+
+          {/* Mobile menu button */}
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-1.5 rounded-lg bg-white/[0.05] border border-white/10 text-slate-300 hover:text-white"
+              aria-label="Toggle Menu"
+            >
+              {isOpen ? <XMarkIcon className="w-5 h-5" /> : <Bars3Icon className="w-5 h-5" />}
+            </button>
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white/95 dark:bg-dark-900/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-700"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute top-16 left-4 right-4 bg-slate-950/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-4 shadow-2xl lg:hidden flex flex-col gap-1 z-50"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Link
-                    to={item.to}
-                    smooth={true}
-                    duration={500}
-                    offset={-70}
-                    onClick={() => setIsOpen(false)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium cursor-pointer transition-all duration-300 ${
-                      activeSection === item.to
-                        ? 'text-primary-500 bg-primary-50 dark:bg-primary-900/20'
-                        : 'text-gray-700 dark:text-gray-300 hover:text-primary-500 hover:bg-gray-100 dark:hover:bg-gray-800'
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.to}
+                smooth={true}
+                duration={500}
+                offset={-80}
+                onClick={() => setIsOpen(false)}
+                className={`px-3.5 py-2.5 rounded-xl text-sm font-medium cursor-pointer transition-colors ${
+                  activeSection === item.to
+                    ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/30'
+                    : 'text-slate-300 hover:bg-white/[0.05]'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </header>
   );
 };
 

@@ -1,337 +1,280 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
-import profileimg from '../images/profile.jpg';
-// import resume from '../images/SaiSeshuAdimulam.pdf'
-
-<Typewriter
-  words={[
-    'AI & ML Developer',
-    'Android Developer',
-    'Cloud Computing Enthusiast',
-    'Problem Solver'
-  ]}
-  loop
-  cursor
-  cursorStyle="_"
-  typeSpeed={70}
-  deleteSpeed={50}
-  delaySpeed={1000}
-/>
-
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
-import { FaGithub, FaLinkedin, FaDownload, FaBrain, FaRobot } from 'react-icons/fa';
 import { Link } from 'react-scroll';
-import { FaInstagram } from 'react-icons/fa';
-import { SparklesIcon, CpuChipIcon } from '@heroicons/react/24/outline';
-
+import { 
+  ArrowDownTrayIcon, 
+  CommandLineIcon, 
+  SparklesIcon, 
+  CpuChipIcon, 
+  SignalIcon,
+  ChevronRightIcon
+} from '@heroicons/react/24/outline';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import profileimg from '../images/profile.jpg';
 
 const Hero = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
-  };
+  const [activeTab, setActiveTab] = useState('telemetry');
+  const [ping, setPing] = useState(14);
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
+  // Periodic simulated latency fluctuation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPing(Math.floor(12 + Math.random() * 6));
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-primary-400/5 to-primary-600/5 rounded-full blur-3xl"></div>
-      </div>
+    <section 
+      id="home" 
+      className="relative min-h-screen pt-28 pb-20 flex items-center justify-center overflow-hidden bg-radial-mesh bg-grid-cyber"
+    >
+      {/* Background Decorative Glow Orbs */}
+      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-600/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid lg:grid-cols-2 gap-12 items-center"
-        >
-          {/* Text Content */}
-          <div className="text-center lg:text-left">
-            <motion.div variants={itemVariants} className="mb-6">
-              <h1 className="text-4xl md:text-6xl font-bold font-space-grotesk text-gray-900 dark:text-white mb-4">
-                Hello, I'm{' '}
-                <span className="gradient-text">Sai Seshu</span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          {/* Left Column: Heading & Value Proposition */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-7 text-center lg:text-left space-y-6"
+          >
+            {/* Status Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="text-xs text-emerald-300 font-medium tracking-wide">
+                Available for Full-Stack &amp; AI Engineering Roles • Fast Onboarding
+              </span>
+            </div>
+
+            {/* Main Headline */}
+            <div className="space-y-2">
+              <h1 className="font-space-grotesk font-bold text-4xl sm:text-6xl tracking-tight text-white leading-[1.1]">
+                Hi, I'm <span className="gradient-text">Sai Seshu</span>
               </h1>
-              <div className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium h-8">
+              
+              <div className="font-mono text-lg sm:text-2xl text-cyan-400 font-medium h-9 flex items-center justify-center lg:justify-start gap-2">
+                <span className="text-slate-500">$</span>
                 <Typewriter
                   words={[
-                    'AI & ML Developer',
-                    'Android Developer',
-                    'Cloud Computing Enthusiast',
-                    'Problem Solver'
+                    'AI/ML Full-Stack Developer',
+                    'Full-Stack Developer (React & Node.js)',
+                    'LLM & RAG Solutions Architect',
+                    'IoT Telemetry & MQTT Specialist',
+                    'Deep Learning & Model Engineer'
                   ]}
                   loop={true}
                   cursor
                   cursorStyle="_"
-                  typeSpeed={70}
-                  deleteSpeed={50}
-                  delaySpeed={1000}
+                  typeSpeed={55}
+                  deleteSpeed={35}
+                  delaySpeed={1400}
                 />
               </div>
-            </motion.div>
+            </div>
 
-            <motion.p
-              variants={itemVariants}
-              className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl"
-            >
-              Passionate about creating intelligent solutions through AI/ML, building intuitive mobile applications, 
-              and leveraging cloud technologies to solve real-world problems. Currently pursuing B.Tech in AI with 
-              hands-on experience in multiple internships.
-            </motion.p>
+            {/* Bio Paragraph */}
+            <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed mx-auto lg:mx-0">
+              AI/ML &amp; Full-Stack Engineer with proven hands-on experience designing and deploying 
+              production-ready distributed applications using <span className="text-white font-semibold">Python, TensorFlow, React, Node.js, and PostgreSQL</span>. 
+              Specialized in real-time IoT telemetry pipelines (MQTT &amp; WebSockets), LLM &amp; RAG architectures, and scalable cloud deployments.
+            </p>
 
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
-            >
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
               <Link
-                to="contact"
+                to="projects"
                 smooth={true}
                 duration={500}
                 offset={-70}
-                className="btn-primary cursor-pointer inline-flex items-center justify-center"
+                className="btn-shimmer px-6 py-3 text-sm font-semibold flex items-center gap-2 cursor-pointer"
               >
-                Get In Touch
+                <span>View Featured Projects</span>
+                <ChevronRightIcon className="w-4 h-4" />
               </Link>
+
               <a
-                href="/Seshur.pdf"
-                download
-                className="btn-secondary inline-flex items-center justify-center gap-2"
+                href="/SaiSeshuAdimulam.pdf"
+                download="SaiSeshuAdimulam_Resume.pdf"
+                className="btn-cyber-outline px-6 py-3 text-sm font-semibold flex items-center gap-2"
               >
-                <FaDownload className="w-4 h-4" />
-                Download CV
+                <ArrowDownTrayIcon className="w-4 h-4 text-cyan-400" />
+                <span>Download Resume</span>
               </a>
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={itemVariants}
-              className="flex gap-6 justify-center lg:justify-start"
-            >
-              <motion.a
-                href="https://github.com/Seshu003"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-3 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-300 hover:text-primary-500 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300"
-              >
-                <FaGithub className="w-6 h-6" />
-              </motion.a>
-              <motion.a
-                href="https://linkedin.com/in/sai-seshu"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-3 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-300 hover:text-primary-500 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300"
-              >
-                <FaLinkedin className="w-6 h-6" />
-              </motion.a>
-
-              <motion.a
-                href="https://www.instagram.com/seshu_adimulam_5925/"  // Replace with your actual handle
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-3 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-300 hover:text-pink-500 hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-all duration-300"
-              >
-                <FaInstagram className="w-6 h-6" />
-              </motion.a>
-            </motion.div>
-          </div>
-
-          {/* Profile Image */}
-          <motion.div
-            variants={itemVariants}
-            className="flex justify-center lg:justify-end"
-          >
-            <div className="relative">
-              {/* Simple gradient border */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 p-1">
-                <div className="w-full h-full rounded-full bg-white dark:bg-dark-900"></div>
+            {/* Core Tech Stack Row */}
+            <div className="pt-4 border-t border-white/[0.08]">
+              <div className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-3">
+                Core Production Stack
               </div>
-              
-              {/* Subtle glow effect */}
-              <motion.div
-                animate={{ 
-                  opacity: [0.3, 0.6, 0.3],
-                  scale: [1, 1.05, 1]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute inset-0 rounded-full bg-primary-500/20 blur-xl"
-              />
-              
-              <motion.img
-                whileHover={{ scale: 1.05 }}
-                src={profileimg}
-                alt="Sai Seshu Adimulam"
-                className="relative z-10 w-80 h-80 object-cover rounded-full shadow-2xl hover:shadow-3xl transition-shadow duration-300"
-              />
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute -top-6 -right-6 group cursor-pointer"
-              >
-                <div className="relative">
-                  {/* Outer glow ring */}
-                  <motion.div
-                    animate={{ 
-                      scale: [1, 1.2, 1],
-                      opacity: [0.3, 0.6, 0.3]
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className="absolute inset-0 w-24 h-24 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full blur-md"
-                  />
-                  
-                  {/* Main badge */}
-                  <div className="relative w-24 h-24 bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 rounded-full flex flex-col items-center justify-center text-white shadow-2xl border-4 border-white/20 backdrop-blur-sm">
-                    {/* Animated icons */}
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        ease: "linear"
-                      }}
-                      className="absolute top-1 right-1"
-                    >
-                      <SparklesIcon className="w-4 h-4 text-yellow-300" />
-                    </motion.div>
-                    
-                    <motion.div
-                      animate={{ 
-                        scale: [1, 1.2, 1],
-                        rotate: [0, 180, 360]
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      <CpuChipIcon className="w-6 h-6 mb-1" />
-                    </motion.div>
-                    
-                    <span className="text-xs font-bold tracking-wider">
-                      AI/ML
-                    </span>
-                    
-                    {/* Floating particles */}
-                    <motion.div
-                      animate={{ 
-                        y: [-10, -20, -10],
-                        opacity: [0.5, 1, 0.5]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: 0.5
-                      }}
-                      className="absolute -top-2 left-2 w-2 h-2 bg-yellow-400 rounded-full"
-                    />
-                    
-                    <motion.div
-                      animate={{ 
-                        y: [-8, -16, -8],
-                        opacity: [0.3, 0.8, 0.3]
-                      }}
-                      transition={{
-                        duration: 2.5,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: 1
-                      }}
-                      className="absolute -top-1 right-3 w-1.5 h-1.5 bg-blue-300 rounded-full"
-                    />
-                    
-                    <motion.div
-                      animate={{ 
-                        y: [-6, -14, -6],
-                        opacity: [0.4, 0.9, 0.4]
-                      }}
-                      transition={{
-                        duration: 1.8,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: 1.5
-                      }}
-                      className="absolute -top-3 left-1/2 w-1 h-1 bg-green-300 rounded-full"
-                    />
-                  </div>
-                  
-                  {/* Hover effect overlay */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    className="absolute inset-0 w-24 h-24 bg-gradient-to-br from-white/10 to-transparent rounded-full"
-                  />
-                </div>
-              </motion.div>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
+                {['Python', 'TensorFlow', 'React', 'Node.js', 'PostgreSQL', 'FastAPI', 'RAG / LLMs', 'Docker', 'AWS', 'MQTT'].map((tech) => (
+                  <span
+                    key={tech}
+                    className="code-badge transition-colors hover:border-indigo-400/60 hover:text-white"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
-        </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2, duration: 0.5 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <Link
-            to="about"
-            smooth={true}
-            duration={500}
-            offset={-70}
-            className="cursor-pointer"
+          {/* Right Column: High-Tech Interactive Terminal HUD */}
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="lg:col-span-5 relative"
           >
+            {/* Terminal Window */}
+            <div className="terminal-card overflow-hidden">
+              {/* Terminal Window Bar */}
+              <div className="flex items-center justify-between px-4 py-3 bg-slate-900/90 border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                  <span className="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                  <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+                  <span className="ml-2 text-xs font-mono text-slate-400">seshu@system-node:~</span>
+                </div>
+                <div className="flex items-center gap-2 text-[11px] font-mono text-emerald-400">
+                  <SignalIcon className="w-3.5 h-3.5 animate-pulse" />
+                  <span>{ping}ms</span>
+                </div>
+              </div>
+
+              {/* Terminal Tabs */}
+              <div className="flex border-b border-white/[0.08] bg-slate-950/60 text-xs font-mono">
+                <button
+                  onClick={() => setActiveTab('telemetry')}
+                  className={`px-4 py-2 border-r border-white/[0.08] transition-colors ${
+                    activeTab === 'telemetry' 
+                      ? 'bg-indigo-950/40 text-indigo-300 border-b-2 border-b-indigo-500' 
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  system.status
+                </button>
+                <button
+                  onClick={() => setActiveTab('architecture')}
+                  className={`px-4 py-2 border-r border-white/[0.08] transition-colors ${
+                    activeTab === 'architecture' 
+                      ? 'bg-indigo-950/40 text-indigo-300 border-b-2 border-b-indigo-500' 
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  architecture.json
+                </button>
+              </div>
+
+              {/* Terminal Content Body */}
+              <div className="p-5 space-y-4 text-xs font-mono leading-relaxed bg-slate-950/80 min-h-[300px]">
+                {activeTab === 'telemetry' ? (
+                  <>
+                    <div className="text-slate-400">
+                      <span className="text-emerald-400">➜</span> <span className="text-cyan-400">~</span> npx seshu status --live
+                    </div>
+
+                    <div className="space-y-1.5 text-slate-300">
+                      <div className="flex justify-between">
+                        <span className="text-slate-500">[ENGINE]</span>
+                        <span className="text-indigo-400">Python 3.13 • TensorFlow Lite</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-500">[FULL-STACK]</span>
+                        <span className="text-cyan-400">React 18 • Node.js • PostgreSQL</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-500">[TELEMETRY]</span>
+                        <span className="text-emerald-400">Aedes MQTT • 32 Live Nodes</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-500">[AI PIPELINE]</span>
+                        <span className="text-purple-400">RAG Context Retrieval • LLMs</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-500">[VERCEL DOMAIN]</span>
+                        <span className="text-slate-200">seshu.vercel.app</span>
+                      </div>
+                    </div>
+
+                    <div className="p-3 rounded-lg bg-indigo-950/30 border border-indigo-500/20 text-slate-300 text-[11px] space-y-1">
+                      <div className="flex items-center gap-2 text-indigo-300 font-semibold">
+                        <CpuChipIcon className="w-4 h-4 text-indigo-400" />
+                        <span>ArcForge Telemetry Pipeline</span>
+                      </div>
+                      <div className="text-slate-400">
+                        Aedes MQTT Broker listening on socket:5000. Real-time sensor streaming active for student evaluation HUD.
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 text-slate-500 pt-1">
+                      <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                      <span>Ready for incoming production deployments...</span>
+                    </div>
+                  </>
+                ) : (
+                  <pre className="text-slate-300 text-[11px] overflow-x-auto">
+{`{
+  "developer": "Sai Seshu Adimulam",
+  "role": "AI/ML Full-Stack Developer",
+  "location": "Kakinada, AP",
+  "cgpa": 8.17,
+  "institution": "KIET (CAI)",
+  "featured_projects": [
+    "ArcForge (IoT Telemetry Suite)",
+    "AI-Powered Python Debugger & Tutor",
+    "Lint AI (Tech Debt Scanner)"
+  ],
+  "fluentedge_awards": [
+    "Speaking Star (Score 7.5/9, CEFR B2)",
+    "Reading Star (Score 7/9, CEFR B2)"
+  ],
+  "contact": {
+    "email": "seshu.ay2k26@gmail.com",
+    "phone": "+91 7981104636"
+  }
+}`}
+                  </pre>
+                )}
+              </div>
+            </div>
+
+            {/* Profile Hologram Avatar Floating Widget */}
             <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-primary-500 transition-colors duration-300"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="absolute -bottom-6 -left-6 flex items-center gap-3 p-2.5 rounded-2xl bg-slate-900/95 border border-indigo-500/30 shadow-2xl backdrop-blur-xl"
             >
-              <span className="text-sm font-medium mb-2">Scroll Down</span>
-              <ChevronDownIcon className="w-6 h-6" />
+              <div className="relative">
+                <img
+                  src={profileimg}
+                  alt="Sai Seshu"
+                  className="w-12 h-12 rounded-xl object-cover border border-white/20"
+                />
+                <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-slate-900"></span>
+              </div>
+              <div className="pr-2">
+                <div className="font-space-grotesk font-bold text-white text-xs">
+                  Sai Seshu Adimulam
+                </div>
+                <div className="text-[10px] font-mono text-cyan-400">
+                  KIET '26 • B.Tech AI
+                </div>
+              </div>
             </motion.div>
-          </Link>
-        </motion.div>
+
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
